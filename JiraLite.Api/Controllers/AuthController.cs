@@ -3,6 +3,7 @@ using JiraLite.Api.Dtos;
 using JiraLite.Api.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace JiraLite.Api.Controllers
 {
@@ -49,8 +50,10 @@ namespace JiraLite.Api.Controllers
         {
             return Ok(new
             {
-                Id = User.FindFirst("sub")?.Value,
-                Email = User.FindFirst("email")?.Value,
+
+                Id = User.FindFirstValue(System.Security.Claims.ClaimTypes.NameIdentifier),
+                Email = User.FindFirstValue(System.Security.Claims.ClaimTypes.Email),
+
                 Name = User.FindFirst("name")?.Value
             });
         }

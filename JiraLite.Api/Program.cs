@@ -70,6 +70,18 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular",
+        policy => policy
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials());
+});
+
 // Build ONLY AFTER ALL SERVICES
 
 var app = builder.Build();
@@ -83,7 +95,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowAngular");
 // AUTH MIDDLEWARE
 app.UseAuthentication();
 app.UseAuthorization();

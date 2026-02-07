@@ -1,0 +1,10 @@
+
+<div *ngIf="error" style="color:red">{{ error }}</div>
+
+<div *ngIf="me" style="margin: 8px 0;">
+  <div><b>Id:</b> {{ me.id }}</div>
+  <div><b>Email:</b> {{ me.email }}</div>
+  <div><b>Name:</b> {{ me.name }}</div>
+</div>
+
+<button (click)="logout()">Logout</button>

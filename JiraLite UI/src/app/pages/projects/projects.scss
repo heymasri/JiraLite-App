@@ -1,0 +1,201 @@
+/* ===============================
+   CREATE PROJECT
+   =============================== */
+
+.project-create {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.project-create input {
+  padding: 6px;
+  font-size: 14px;
+  border: 1px solid #aaa;
+  background: #fafafa;
+}
+
+.project-create button {
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 1px solid #000;
+  background: #fff;
+}
+
+/* ===============================
+   PROJECT LIST
+   =============================== */
+
+.project-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ===============================
+   PROJECT CARD
+   =============================== */
+
+.project-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 10px;
+
+  background: #fcfcfc;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.project-item:hover {
+  background: #f4f4f4;
+  border-color: #000;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.project-item .desc {
+  font-size: 12px;
+  color: #555;
+}
+
+/* ===============================
+   RIGHT-SIDE ACTIONS
+   =============================== */
+
+.project-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Edit / Delete icon buttons */
+.icon-btn {
+  
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 4px 6px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #000;
+
+  opacity: 0;           /* hidden */
+  pointer-events: none; /* not clickable */
+
+  transition: opacity 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+
+/* Reveal on hover */
+.project-item:hover .icon-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Hide icons while editing */
+.project-item:has(.project-edit-bar) .icon-btn {
+  opacity: 0 !important;
+  pointer-events: none !important;
+
+}
+
+/* Hover feedback */
+.icon-btn:hover {
+  background: #eaeaea;
+  border-color: #000;
+}
+
+/* Open Board = primary neutral action */
+.open-board-btn {
+  border: 1px solid #000;
+  background: #f5f5f5;
+  padding: 4px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+
+.open-board-btn:hover {
+  background: #e6e6e6;
+}
+
+/* ===============================
+   EDIT MODE 
+   =============================== */
+
+.project-edit-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+
+  background: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+/* Inline inputs */
+.project-edit-bar input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 4px 6px;
+  font-size: 14px;
+}
+
+.project-edit-bar input:focus {
+  outline: none;
+  border-bottom-width: 2px;
+}
+
+.edit-key {
+  width: 60px;
+}
+
+.edit-name {
+  flex: 1;
+}
+
+/* ===============================
+   SAVE / CANCEL (RIGHT CORNER)
+   =============================== */
+
+.edit-actions.right {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+/* SAVE */
+.edit-actions.right button:first-child {
+  border: 1px solid #000;
+  background: #f5f5f5;
+  padding: 4px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.edit-actions.right button:first-child:hover {
+  background: #e0e0e0;
+}
+
+/* CANCEL */
+.edit-actions.right button:last-child {
+  border: 1px solid #888;
+  background: #f5f5f5;
+  padding: 4px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.edit-actions.right button:last-child:hover {
+  background: #e6e6e6;
+}

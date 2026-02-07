@@ -125,6 +125,11 @@ JiraLite was built to practice and demonstrate:
 *   Soft deletes and audit logs
 
 ***
+## 🌐 Screenshots
+<img width="1903" height="674" alt="image" src="https://github.com/user-attachments/assets/8a8e7603-d78c-4462-8cf1-02eccea56680" />
+<img width="1915" height="784" alt="image" src="https://github.com/user-attachments/assets/95e1c3f7-1101-48f2-9f62-2b25f6773ab5" />
+<img width="1888" height="751" alt="image" src="https://github.com/user-attachments/assets/4568efde-40b4-45e5-bb14-fbe33ffac655" />
+<img width="1908" height="767" alt="image" src="https://github.com/user-attachments/assets/4ab7d9f8-b751-4791-b46a-36b9cce9d676" />
 
 
 ## 🙌💻  Final Note

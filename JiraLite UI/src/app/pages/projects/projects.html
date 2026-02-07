@@ -1,0 +1,84 @@
+<h2>Projects</h2>
+
+<!-- Create Project -->
+<form
+  class="project-create"
+  [formGroup]="form"
+  (ngSubmit)="create()"
+>
+  <input
+    type="text"
+    placeholder="Key (ex: JL)"
+    formControlName="key"
+  />
+
+  <input
+    type="text"
+    placeholder="Name"
+    formControlName="name"
+  />
+
+  <input
+    type="text"
+    placeholder="Description"
+    formControlName="description"
+  />
+
+  <button type="submit">Create</button>
+</form>
+
+<!-- Loading only (no inline error text) -->
+<div class="loading" *ngIf="loading">Loading…</div>
+
+<!-- Project List -->
+<ul class="project-list">
+  <li
+  class="project-item"
+  *ngFor="let p of projects"
+  [class.editing]="editingProjectId === p.id">
+  <!-- NORMAL VIEW -->
+  <ng-container *ngIf="editingProjectId !== p.id; else editBar">
+
+    <div class="project-info">
+      <div class="title">
+        <strong>{{ p.key }}</strong> — {{ p.name }}
+      </div>
+      <div class="desc">
+        {{ p.description || '—' }}
+      </div>
+    </div>
+
+     <div class="project-actions">
+      <button class="icon-btn edit" type="button" (click)="startEdit(p)">✏️</button>
+      <button class="icon-btn delete" type="button" (click)="deleteProject(p)">🗑️</button>
+      <button class="open-board-btn" type="button" (click)="openBoard(p.id)">Open Board</button></div>
+
+  </ng-container>
+
+  <!--EDIT MODE -->
+  <ng-template #editBar>
+    <div class="project-edit-bar">
+
+  <input
+    class="edit-key"
+    type="text"
+    [formControl]="editProjectForm.controls.key"
+  />
+
+  <input
+    class="edit-name"
+    type="text"
+    [formControl]="editProjectForm.controls.name"
+  />
+
+  <!-- RIGHT: Save / Cancel -->
+  <div class="edit-actions right">
+    <button type="button" (click)="saveEdit(p)">Save</button>
+    <button type="button" (click)="cancelEdit()">Cancel</button>
+  </div>
+
+  </div>
+  </ng-template>
+
+</li>
+</ul>

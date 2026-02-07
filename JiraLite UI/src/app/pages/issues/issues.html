@@ -1,0 +1,74 @@
+<!-- Board Header -->
+<div class="board-header">
+  <div>
+    <h2>Board — {{ project?.key || '' }}</h2>
+    <div class="sub">{{ project?.name || '' }}</div>
+  </div>
+
+  <button class="link" (click)="goBack()">← Back to Projects</button>
+</div>
+
+
+<!-- Create Issue -->
+<form class="issue-create" [formGroup]="form" (ngSubmit)="createIssue()">
+  <input placeholder="Issue title" formControlName="title" />
+  <select formControlName="priority">
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+  </select>
+  <button type="submit">Create Issue</button>
+</form>
+
+<div *ngIf="loading" class="loading">Loading…</div>
+
+<!-- Board -->
+<div class="board" cdkDropListGroup>
+  <div class="column" *ngFor="let status of statuses">
+    <h3>{{ status }} ({{ count(status) }})</h3>
+
+    <div
+      class="drop-zone"
+      cdkDropList
+      [cdkDropListData]="list(status)"
+      (cdkDropListDropped)="onDrop($event, status)"
+    >
+
+      <!-- FIX: issue is defined HERE -->
+      <div
+        class="card"
+        *ngFor="let issue of list(status)"
+        cdkDrag
+      >
+
+        <!-- Edit/Delete issue -->
+        <div class="card-actions">
+          <button type="button" (click)="startEdit(issue)">✏️</button>
+          <button type="button" (click)="deleteIssue(issue)">🗑️</button>
+        </div>
+
+        <!-- Normal view -->
+        <ng-container *ngIf="editingId !== issue.id; else editMode">
+          <div class="title">{{ issue.title }}</div>
+          <div class="meta">Priority: {{ issue.priority }}</div>
+        </ng-container>
+
+        <!-- Edit mode -->
+        <ng-template #editMode>
+          <input [formControl]="editForm.controls.title" />
+          <select [formControl]="editForm.controls.priority">
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+          </select>
+
+          <div class="edit-actions">
+            <button type="button" (click)="saveEdit(issue)">Save</button>
+            <button type="button" (click)="cancelEdit()">Cancel</button>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</div>

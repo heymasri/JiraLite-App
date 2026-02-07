@@ -1,0 +1,21 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+
+.topbar a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.content {
+  padding: 16px;
+}

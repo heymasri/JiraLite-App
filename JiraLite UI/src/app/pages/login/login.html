@@ -1,0 +1,21 @@
+<div class="auth-card">
+  <h2>JiraLite</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>Email</label>
+    <input type="email" formControlName="email" placeholder="email" />
+
+    <label>Password</label>
+    <input type="password" formControlName="password" placeholder="password" />
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+
+    <button type="submit" [disabled]="loading">
+      {{ loading ? 'Logging in...' : 'Login' }}
+    </button>
+  </form>
+
+  <p class="hint">
+    New user? <a routerLink="/register">Register</a>
+  </p>
+</div>

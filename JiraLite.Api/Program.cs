@@ -22,7 +22,17 @@ var keyBytes = Encoding.UTF8.GetBytes(jwt["Key"]!);
 
 // Register AuthService
 builder.Services.AddScoped<AuthService>();
-
+// ✅ NEW: CORS policy for Angular dev
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("DevCors", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:4200")  // ✅ Angular dev server
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 //authentication BEFORE Build()
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(o =>
@@ -70,18 +80,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAngular",
-        policy => policy
-            .WithOrigins("http://localhost:4200")
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials());
-});
-
 // Build ONLY AFTER ALL SERVICES
 
 var app = builder.Build();
@@ -95,7 +93,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("AllowAngular");
+
+app.UseCors("DevCors");
 // AUTH MIDDLEWARE
 app.UseAuthentication();
 app.UseAuthorization();

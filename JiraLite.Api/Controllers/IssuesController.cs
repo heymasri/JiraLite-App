@@ -107,7 +107,46 @@ namespace JiraLite.Api.Controllers
             // 4) Return grouped result
             return Ok(grouped);
         }
+        // PUT /api/issues/{id}
+        // Updates issue title + priority
+        [HttpPut("{id:guid}")]
+        public async Task<IActionResult> UpdateIssue(
+            Guid id,
+            [FromBody] IssueUpdateDto dto)
+        {
+            // Validate priority
+            var allowedPriority = new[] { "Low", "Medium", "High" };
+            if (!allowedPriority.Contains(dto.Priority))
+                return BadRequest(new { message = "Priority must be Low, Medium, or High" });
 
+            // Find issue
+            var issue = await _db.Issues.FindAsync(id);
+            if (issue is null)
+                return NotFound();
+
+            // Update fields
+            issue.Title = dto.Title;
+            issue.Priority = dto.Priority;
+            issue.UpdatedAt = DateTime.UtcNow;
+
+            await _db.SaveChangesAsync();
+
+            return Ok(issue);
+        }
+        // DELETE /api/issues/{id}
+        // Deletes an issue
+        [HttpDelete("{id:guid}")]
+        public async Task<IActionResult> DeleteIssue(Guid id)
+        {
+            var issue = await _db.Issues.FindAsync(id);
+            if (issue is null)
+                return NotFound();
+
+            _db.Issues.Remove(issue);
+            await _db.SaveChangesAsync();
+
+            return NoContent(); // 204
+        }
         // PATCH /api/issues/{id}/status/{status}
         // Changes the status of an issue (ToDo/InProgress/Done)
         [HttpPatch("{id:guid}/status/{status}")]

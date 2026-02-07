@@ -10,19 +10,19 @@ This is a **hands‑on, production‑style project**, not a tutorial demo.
 
 ### Backend
 
-*   **ASP.NET Core Web API** (.NET 7)
-*   **Entity Framework Core**
-*   **SQL Server**
-*   **JWT Authentication**
+*   ASP.NET Core Web API (.NET 7)
+*   Entity Framework Core
+*   SQL Server
+*   JWT Authentication
 *   RESTful API design
 
 ### Frontend
 
-*   **Angular 16**
-*   **Standalone Components**
-*   **Reactive Forms**
-*   **Angular CDK (Drag & Drop)**
-*   **SCSS (custom, no UI libraries)**
+*   Angular 16
+*   Standalone Components
+*   Reactive Forms
+*   Angular CDK (Drag & Drop)
+*   SCSS (custom, no UI libraries)
 
 ### Tooling
 

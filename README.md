@@ -1,11 +1,6 @@
-# JiraLite 🧩
+# JiraLite 👩‍💻
 
 **A lightweight Jira‑style project & issue tracker**
-
-<https://img.shields.io/badge/Angular-16-red>
-<https://img.shields.io/badge/.NET-7-blueviolet>
-<https://img.shields.io/badge/Database-SQL%20Server-lightgrey>
-
 **JiraLite** is a full‑stack web application inspired by Jira, built to manage **projects**, **issues**, and **workflow states**.
 This is a **hands‑on, production‑style project**, not a tutorial demo.
 
@@ -132,7 +127,7 @@ JiraLite was built to practice and demonstrate:
 ***
 
 
-## 🙌 Final Note
+## 🙌💻  Final Note
 
 JiraLite is not meant to replace Jira —  
 it’s meant to **understand how tools like Jira are built**.

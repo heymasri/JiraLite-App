@@ -130,6 +130,8 @@ JiraLite was built to practice and demonstrate:
 <img width="1915" height="784" alt="image" src="https://github.com/user-attachments/assets/95e1c3f7-1101-48f2-9f62-2b25f6773ab5" />
 <img width="1888" height="751" alt="image" src="https://github.com/user-attachments/assets/4568efde-40b4-45e5-bb14-fbe33ffac655" />
 <img width="1908" height="767" alt="image" src="https://github.com/user-attachments/assets/4ab7d9f8-b751-4791-b46a-36b9cce9d676" />
+<img width="1892" height="839" alt="image" src="https://github.com/user-attachments/assets/b5c74528-78af-49b0-99f3-3a6c5a1f5d82" />
+<img width="1910" height="1000" alt="image" src="https://github.com/user-attachments/assets/49419c59-dbce-4f36-8d08-91caf238f48d" />
 
 
 ## 🙌💻  Final Note
